@@ -1,9 +1,12 @@
 import React from 'react';
+import Hero from './Hero';
+import Work from './Work';
 
 const Home = () => {
     return (
-        <div>
-            <p>ami home </p>
+        <div className='w-11/12 mx-auto pt-14'>
+            <Hero/>
+            <Work/>
         </div>
     );
 };
