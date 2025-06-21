@@ -3,6 +3,7 @@ import Hero from './Hero';
 import Work from './Work';
 import Service from './Service';
 import Brand from './Brand';
+import Percel from './Percel';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <Work/>
             <Service/>
             <Brand/>
+            <Percel/>
         </div>
     );
 };

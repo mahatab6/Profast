@@ -12,7 +12,7 @@ const Brand = () => {
     const brandlogo = [ amazon, vector, casio, moonstar, randstad, start, people];
 
     return (
-        <div className='py-22'>
+        <div className='py-22 w-8/12 mx-auto'>
             <h1 className='text-3xl font-extrabold text-center py-5'>We've helped thousands of sales teams</h1>
             <Marquee>
                 {
