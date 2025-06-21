@@ -4,6 +4,7 @@ import Work from './Work';
 import Service from './Service';
 import Brand from './Brand';
 import Percel from './Percel';
+import Merchant from './Merchant';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Service/>
             <Brand/>
             <Percel/>
+            <Merchant/>
         </div>
     );
 };
