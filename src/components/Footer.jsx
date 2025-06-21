@@ -7,7 +7,7 @@ import { FaGithub } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <footer className=" p-4 text-center bg-black py-20 px-40 m-5 rounded-4xl space-y-4">
+        <footer className=" p-4 text-center bg-cyan-900 py-20 px-40 m-5 rounded-4xl space-y-4">
             <div className=" justify-items-center">
                 <ProfastLog />
                 <p>

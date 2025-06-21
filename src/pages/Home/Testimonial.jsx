@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './TestimonialSlider.css';
+import customer from '../../assets/customer-top.png'
 
 
 
@@ -31,6 +32,11 @@ const Testimonial = () => {
 
   return (
     <div className="testimonial-container w-10/12 mx-auto">
+      <div className=' space-y-3 justify-items-center py-5'>
+        <img src={customer} alt="" />
+        <h2 className='text-2xl font-extrabold'>What our customers are sayings</h2>
+        <p className='text-center'>Enhance posture, mobility, and well-being effortlessly with Posture Pro. Achieve proper alignment, reduce <br /> pain, and strengthen your body with ease!</p>
+      </div>
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
