@@ -4,7 +4,7 @@ import location from '../../assets/location-merchant.png'
 
 const Merchant = () => {
     return (
-        <div className='flex items-center bg-[#03373D] w-11/12 mx-auto p-20 rounded-2xl mt-20'>
+        <div className='flex items-center bg-[url("assets/be-a-merchant-bg.png")] bg-no-repeat bg-[#03373D] w-11/12 mx-auto p-20 rounded-2xl mt-20'>
             <div className=' space-y-4'>
                 <h1 className='text-4xl font-extrabold'>Merchant and Customer Satisfaction is Our First Priority</h1>
                 <p>We offer the lowest delivery charge with the highest value along with 100% safety of your product. Pathao courier delivers your parcels in every corner of Bangladesh right on time.</p>

@@ -5,6 +5,7 @@ import Service from './Service';
 import Brand from './Brand';
 import Percel from './Percel';
 import Merchant from './Merchant';
+import Testimonial from './Testimonial';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <Brand/>
             <Percel/>
             <Merchant/>
+            <Testimonial/>
         </div>
     );
 };
