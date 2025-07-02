@@ -9,9 +9,10 @@ const Register = () => {
     const [disProfile, setDisProfile] = useState();
 
     const { register, handleSubmit, formState:{errors}} = useForm();
-    const onSubmit = async(data) => {
+    const onSubmit = (data) => {
         
         console.table(data)
+        console.log(disProfile)
   
     }
 
