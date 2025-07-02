@@ -2,18 +2,30 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaRegUserCircle } from "react-icons/fa";
+import useAuth from '../../hook/useAuth';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router';
 
 
 const Register = () => {
 
-    const [disProfile, setDisProfile] = useState();
+    const [disImage, setDisProfile] = useState();
 
     const { register, handleSubmit, formState:{errors}} = useForm();
+    const { createUser,userProfile } = useAuth();
+    const navigate = useNavigate();
+
     const onSubmit = (data) => {
         
-        console.table(data)
-        console.log(disProfile)
-  
+        createUser(data.email, data.password)
+        .then(result => {
+            if(result.user){
+            toast.success('Successfully created!');
+            userProfile(data.name,disImage)
+            navigate('/');
+            }
+        })
+
     }
 
     const handleImageChange = async(e) =>{
@@ -39,7 +51,7 @@ const Register = () => {
                             <div tabIndex={0}>
                                 <div className="avatar">
                                     <div className="ring-primary w-12 rounded-full">
-                                        <img src={disProfile || "https://img.daisyui.com/images/profile/demo/spiderperson@192.webp"} />
+                                        <img src={disImage || "https://img.daisyui.com/images/profile/demo/spiderperson@192.webp"} />
                                     </div>
                                 </div>
                             </div>
