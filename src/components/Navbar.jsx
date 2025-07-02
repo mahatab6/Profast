@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import ProfastLog from './ProfastLog';
 
 const Navbar = () => {
@@ -43,7 +43,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Sign In</a>
+                    <Link to="/login" className='btn'>Sign In</Link>
                     <a className="btn">Be a rider</a>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import ProfastLog from '../../components/ProfastLog';
 
 const Login = () => {
 
@@ -11,6 +12,7 @@ const Login = () => {
 
     return (
         <div className='max-w-4xl bg-[#FAFDF0] rounded-2xl p-5'>
+            <ProfastLog/>
             <div>
                 <h1 className='text-4xl font-extrabold'>Welcome Back</h1>
                 <p>Login with Profast</p>
