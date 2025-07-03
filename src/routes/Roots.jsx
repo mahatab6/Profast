@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home";
 import AuthenticationLayouts from "../layouts/AuthenticationLayouts";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
+import Loading from "../components/Loading";
+import BeaRider from "../pages/BeaRider";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +15,14 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home/>
+      },
+      {
+        path: "loading",
+        element: <Loading/>
+      },
+      {
+        path: "be-a-rider",
+        element: <BeaRider/>
       }
     ]
   },
