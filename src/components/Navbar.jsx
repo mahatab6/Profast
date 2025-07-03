@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
 import ProfastLog from './ProfastLog';
+import useAuth from '../hook/useAuth';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
+    const { user, LogOut } = useAuth();
     const link = <>
     <li>
         <NavLink>Services</NavLink>
@@ -19,8 +22,14 @@ const Navbar = () => {
     <li>
         <NavLink>Be a Rider</NavLink>
     </li>
-
     </>
+
+    const handleLogout = () =>{
+        LogOut()
+        .then(
+            toast.success('Logout Successfully!')
+        )
+    }
     return (
         <div>
             <div className="navbar bg-base-100 shadow-xl w-11/12 mx-auto mt-5">
@@ -42,8 +51,11 @@ const Navbar = () => {
                         {link}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <Link to="/login" className='btn'>Sign In</Link>
+                <div className="navbar-end gap-2">
+                    {
+                        user?.email? <Link onClick={handleLogout} className='btn'>Sign Out</Link> :<Link to="/login" className='btn'>Sign In</Link>
+
+                    }
                     <a className="btn">Be a rider</a>
                 </div>
             </div>
