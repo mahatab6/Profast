@@ -17,7 +17,7 @@ const Navbar = () => {
         <NavLink>About Us</NavLink>
     </li>
     <li>
-        <NavLink>Pricing</NavLink>
+        <NavLink to="/add-parcel">Add Parcel</NavLink>
     </li>
     <li>
         <NavLink to="/be-a-rider">Be a Rider</NavLink>

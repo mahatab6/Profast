@@ -7,6 +7,7 @@ import Register from "../pages/Authentication/Register";
 import Loading from "../components/Loading";
 import BeaRider from "../pages/BeaRider";
 import Coverage from "../pages/coverage/Coverage";
+import AddParcel from "../pages/AddParcel";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       },{
         path: "coverage",
         element: <Coverage/>
+      },
+      {
+       path: "add-parcel",
+       element: <AddParcel/>
       }
     ]
   },
