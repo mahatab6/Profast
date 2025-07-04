@@ -6,6 +6,7 @@ import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import Loading from "../components/Loading";
 import BeaRider from "../pages/BeaRider";
+import Coverage from "../pages/coverage/Coverage";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,9 @@ export const router = createBrowserRouter([
       {
         path: "be-a-rider",
         element: <BeaRider/>
+      },{
+        path: "coverage",
+        element: <Coverage/>
       }
     ]
   },
