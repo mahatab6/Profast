@@ -24,6 +24,13 @@ const AddParcel = () => {
     return branch?.covered_area || [];
   };
 
+  const generateTrackingId = () => {
+  const datePart = new Date().toISOString().slice(0,10).replace(/-/g, ''); // e.g., 20250705
+  const randomPart = Math.random().toString(36).substring(2, 8).toUpperCase(); // e.g., AB123
+  return `TCK-${datePart}-${randomPart}`;
+  };
+
+
   const getCharge = () => {
     if (!parcelType || !receiverRegion) return 0;
     const isOutsideCity = receiverRegion === 'outsideCity';
@@ -36,7 +43,8 @@ const AddParcel = () => {
 
   const onSubmit = (data) => {
     const charge = getCharge();
-    console.log({ ...data, deliveryCharge: charge });
+    const trackingId = generateTrackingId();
+    console.log({ ...data, trackingId, deliveryCharge: charge });
     alert(`Form submitted! Delivery Charge: ৳${charge}`);
   };
 
