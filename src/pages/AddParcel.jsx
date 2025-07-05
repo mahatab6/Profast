@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import useAxiosSecure from '../hook/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const AddParcel = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
+  const axiosSecure = useAxiosSecure();
   const [branches, setBranches] = useState([]);
 
   useEffect(() => {
@@ -42,10 +44,24 @@ const AddParcel = () => {
   };
 
   const onSubmit = (data) => {
-    const charge = getCharge();
-    const trackingId = generateTrackingId();
-    console.log({ ...data, trackingId, deliveryCharge: charge });
-    alert(`Form submitted! Delivery Charge: ৳${charge}`);
+
+    const parcelData = {
+      data,
+      deliveryCharge: getCharge(),
+      trackingId : generateTrackingId(),
+
+    }
+    axiosSecure.post('/parcel-booking',parcelData)
+    .then(res =>{
+      if(res.data.insertedId){
+        Swal.fire({
+          title: "Parcel booking done!",
+          text: "proceeding to payment getway.",
+          icon: "success",
+          draggable: true
+        });
+      }
+    })
   };
 
   return (
