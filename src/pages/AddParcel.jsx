@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import useAuth from '../hook/useAuth';
 
 const AddParcel = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit,reset, watch, formState: { errors } } = useForm();
   const axiosSecure = useAxiosSecure();
   const [branches, setBranches] = useState([]);
   const { user } = useAuth();
@@ -65,6 +65,7 @@ const AddParcel = () => {
           icon: "success",
           draggable: true
         });
+        reset();
       }
     })
   };

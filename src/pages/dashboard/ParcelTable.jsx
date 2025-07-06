@@ -1,6 +1,38 @@
 import React from 'react';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hook/useAxiosSecure';
 
-const ParcelTable = ({ parcels }) => {
+const ParcelTable = ({ parcels,refetch }) => {
+
+    const axiosSecure = useAxiosSecure();
+
+    const handleDelete= (id)=>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Are you wanting to delete this parcel?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/parcel-delete/${id}`)
+                .then(res =>{
+                    if(res.data.deletedCount){
+                         Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                        refetch();
+                    }
+                })               
+            }
+            });
+        
+    }
+    
   return (
     <div className="overflow-x-auto p-4">
       <h2 className="text-xl font-semibold mb-4">Sender Parcels</h2>
@@ -15,6 +47,7 @@ const ParcelTable = ({ parcels }) => {
             <th className="py-2 px-3 border">Charge</th>
             <th className="py-2 px-3 border">Created</th>
             <th className="py-2 px-3 border">Action</th>
+            <th className="py-2 px-3 border">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -46,6 +79,11 @@ const ParcelTable = ({ parcels }) => {
               <td className="py-2 px-3 border">
                 <button className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
                   Pay
+                </button>
+              </td>
+              <td className="py-2 px-3 border">
+                <button onClick={()=>handleDelete(parcel._id)} className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
+                  Delete
                 </button>
               </td>
             </tr>
