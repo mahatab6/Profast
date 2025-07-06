@@ -11,6 +11,7 @@ import AddParcel from "../pages/AddParcel";
 import Privateroute from "./Privateroute";
 import DashboardLayouts from "../layouts/DashboardLayouts";
 import MyParcelInfo from "../pages/dashboard/MyParcelInfo";
+import Payment from "../pages/dashboard/payment/payment";
 
 export const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ export const router = createBrowserRouter([
       },
       {
        path: "add-parcel",
-       element: <AddParcel/>
+       element: <Privateroute><AddParcel/></Privateroute>
       }
     ]
   },
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path:'my-parcel-info',
         element:<MyParcelInfo/>
+      },
+      {
+        path:'payment/:id',
+        element: <Payment/>
       }
 
     ]

@@ -2,19 +2,22 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hook/useAuth';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 const Login = () => {
 
     const { register, handleSubmit } = useForm();
     const {GoogleLogin, signInUser} = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+    const form = location.state?.from || '/' ;
 
     const onSubmit = data => {
         signInUser(data.email, data.password)
         .then(result =>{
             if(result.email){
             toast.success('Login Successfully!');
+            navigate(form);
             }
         })
         .catch(error =>{
@@ -27,7 +30,7 @@ const Login = () => {
         .then(result => {
             if(result.user){
             toast.success('Login Successfully!');
-            navigate('/');
+            navigate(form);
             }
         })
 

@@ -1,10 +1,12 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hook/useAxiosSecure';
+import { Link, useNavigate } from 'react-router';
 
 const ParcelTable = ({ parcels,refetch }) => {
 
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
 
     const handleDelete= (id)=>{
         Swal.fire({
@@ -32,6 +34,10 @@ const ParcelTable = ({ parcels,refetch }) => {
             });
         
     }
+
+    const handlePayment = (id) =>{
+        navigate(`/dashboard/payment/${id}`)
+    }
     
   return (
     <div className="overflow-x-auto p-4">
@@ -42,7 +48,7 @@ const ParcelTable = ({ parcels,refetch }) => {
             <th className="py-2 px-3 border">Tracking ID</th>
             <th className="py-2 px-3 border">Sender</th>
             <th className="py-2 px-3 border">Receiver</th>
-            <th className="py-2 px-3 border">Parcel Type</th>
+            <th className="py-2 px-3 border">Product name</th>
             <th className="py-2 px-3 border">Weight</th>
             <th className="py-2 px-3 border">Charge</th>
             <th className="py-2 px-3 border">Created</th>
@@ -70,16 +76,14 @@ const ParcelTable = ({ parcels,refetch }) => {
                   </div>
                 </div>
               </td>
-              <td className="py-2 px-3 border">{parcel.parcelType}</td>
+              <td className="py-2 px-3 border">{parcel.parcelName}</td>
               <td className="py-2 px-3 border">{parcel.parcelWeight}g</td>
               <td className="py-2 px-3 border">৳{parcel.deliveryCharge}</td>
               <td className="py-2 px-3 border">
                 {new Date(parcel.createdAt).toLocaleDateString()}
               </td>
               <td className="py-2 px-3 border">
-                <button className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
-                  Pay
-                </button>
+                <Link onClick={()=> handlePayment(parcel._id)} className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Pay</Link>
               </td>
               <td className="py-2 px-3 border">
                 <button onClick={()=>handleDelete(parcel._id)} className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
