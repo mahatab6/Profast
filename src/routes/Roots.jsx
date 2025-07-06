@@ -8,6 +8,8 @@ import Loading from "../components/Loading";
 import BeaRider from "../pages/BeaRider";
 import Coverage from "../pages/coverage/Coverage";
 import AddParcel from "../pages/AddParcel";
+import Privateroute from "./Privateroute";
+import DashboardLayouts from "../layouts/DashboardLayouts";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +49,15 @@ export const router = createBrowserRouter([
         path: "register",
         element: <Register/>
       }
+    ]
+  },
+  {
+    path: "/dashboard",
+    element: <Privateroute>
+      <DashboardLayouts/>
+    </Privateroute>,
+    children:[
+
     ]
   }
 ]);

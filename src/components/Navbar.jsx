@@ -22,6 +22,9 @@ const Navbar = () => {
     <li>
         <NavLink to="/be-a-rider">Be a Rider</NavLink>
     </li>
+    {
+        user?.email? <li><NavLink to='/dashboard'>Dashboard</NavLink> </li> :''
+    }
     </>
 
     const handleLogout = () =>{
