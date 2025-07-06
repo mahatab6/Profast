@@ -10,6 +10,7 @@ import Coverage from "../pages/coverage/Coverage";
 import AddParcel from "../pages/AddParcel";
 import Privateroute from "./Privateroute";
 import DashboardLayouts from "../layouts/DashboardLayouts";
+import MyParcelInfo from "../pages/dashboard/MyParcelInfo";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       <DashboardLayouts/>
     </Privateroute>,
     children:[
+      {
+        path:'my-parcel-info',
+        element:<MyParcelInfo/>
+      }
 
     ]
   }

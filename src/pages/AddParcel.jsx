@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../hook/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAuth from '../hook/useAuth';
 
 const AddParcel = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const axiosSecure = useAxiosSecure();
   const [branches, setBranches] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     fetch('/warehouses.json')
@@ -43,14 +45,17 @@ const AddParcel = () => {
     return (isOutsideCity ? 150 : 110) + extraCharge + (isOutsideCity ? 40 : 0);
   };
 
+
   const onSubmit = (data) => {
 
     const parcelData = {
-      data,
+      ...data,
+      createdAt : new Date(),
+      senderEmail : user?.email,
       deliveryCharge: getCharge(),
       trackingId : generateTrackingId(),
-
     }
+
     axiosSecure.post('/parcel-booking',parcelData)
     .then(res =>{
       if(res.data.insertedId){
