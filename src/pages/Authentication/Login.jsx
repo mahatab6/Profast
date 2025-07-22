@@ -40,7 +40,7 @@ const Login = () => {
         <div className='max-w-4xl bg-[#FAFDF0] rounded-2xl p-5'>
             <div>
                 <h1 className='text-4xl font-extrabold'>Welcome Back</h1>
-                <p>Login with Profast</p>
+                <p className='text-2xl font-medium'>Login with Profast</p>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 pt-5">
                 <div className="space-y-4">
